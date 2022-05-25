@@ -1,0 +1,43 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(45deg, #00AAFF, #00FF6C);
+    height: 100vh;
+}
+
+.frame{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px,  auto) repeat(5, 100px);
+}
+
+button{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid black;
+    outline: none;
+    background-color: white;
+}
+
+button:hover{
+    background-color: wheat;
+}
+
+.screen{
+    background-color: aliceblue;
+    border: 2px solid black;
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 56px;
+}
+
+.all-clear, #equals{
+    grid-column: span 2;
+}
