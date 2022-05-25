@@ -1,7 +1,3 @@
-*, *::before, *::after{
-    box-sizing: border-box;
-}
-
 body{
     background: linear-gradient(45deg, #00AAFF, #00FF6C);
     height: 100vh;
