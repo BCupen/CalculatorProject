@@ -17,6 +17,8 @@ numberButtons.forEach(btn => btn.addEventListener('click', (e) => {
         currOperand = "0";
         string += "0";
     }
+    if(currOperand.includes(".") && e.target.textContent === ".")
+        return;
     currOperand += e.target.textContent;
     string += e.target.textContent;
     screen.textContent = string;
