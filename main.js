@@ -56,12 +56,21 @@ deleteButton.addEventListener('click', (e) =>{
 })
 
 equalsButton.addEventListener('click', (e)=>{
-    secondOperand = currOperand;
-    string = operate(currOperator, firstOperand, secondOperand);
-    currOperand = string;
-    screen.textContent = string;
-    firstOperand = "";
-    secondOperand = "";
+    if(firstOperand === "" && secondOperand ===""){
+        if(currOperand === "")
+            screen.textContent = "0";
+        else
+            screen.textContent = currOperand;
+    }else{
+        secondOperand = currOperand;
+        string = operate(currOperator, firstOperand, secondOperand);
+        currOperand = string;
+        screen.textContent = string;
+        firstOperand = "";
+        secondOperand = "";    
+    }
+
+    
 })
 
 function clearScreen(){
