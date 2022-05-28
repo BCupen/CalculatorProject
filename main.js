@@ -83,7 +83,13 @@ function operate(operator, operand1, operand2){
     }else if(operator == "*"){
         return multiply(operand1, operand2);
     }else{
-        return divide(operand1, operand2);
+        if(operand2 == 0){
+            alert("Cannot Divide by 0!");
+            return ""; 
+        }else{
+            return divide(operand1, operand2); 
+        }
+        
     }
 }
 
@@ -100,7 +106,7 @@ function multiply(a, b){
 }
 
 function divide(a,b){
-    return a/b;
+    return Math.round((a/b)*100)/100;
 }
 
 function isOperator(char){
