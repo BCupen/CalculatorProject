@@ -13,17 +13,32 @@ const equalsButton = document.querySelector('#equals');
 const screen = document.querySelector('.screen');
 
 numberButtons.forEach(btn => btn.addEventListener('click', (e) => {
+    if(currOperand === "" && e.target.textContent === "."){
+        currOperand = "0";
+        string += "0";
+    }
     currOperand += e.target.textContent;
     string += e.target.textContent;
     screen.textContent = string;
 }));
 
 operators.forEach(btn => btn.addEventListener('click', (e) =>{
-    if(firstOperand === ""){
+    if(firstOperand!="" && currOperator===""){
+        currOperator = e.target.textContent;
+        string +=e.target.textContent;
+        screen.textContent = string;
+    }else if(firstOperand === ""){
         firstOperand = currOperand;
         currOperand = "";
         currOperator = e.target.textContent;
         string += e.target.textContent;
+        screen.textContent = string;
+    }else{
+        secondOperand = currOperand;
+        currOperand = "";
+        firstOperand = operate(currOperator, firstOperand, secondOperand);
+        currOperator = e.target.textContent;
+        string = firstOperand + currOperator;
         screen.textContent = string;
     }
 }));
@@ -31,6 +46,11 @@ operators.forEach(btn => btn.addEventListener('click', (e) =>{
 allClearButton.addEventListener('click',clearScreen);
 
 deleteButton.addEventListener('click', (e) =>{
+    if(isOperator(string.charAt(string.length-1))){
+        currOperator = "";
+    }else{
+        currOperand = currOperand.slice(0,-1);
+    }
     string = string.slice(0, string.length - 1);
     screen.textContent = string;
 })
@@ -81,4 +101,11 @@ function multiply(a, b){
 
 function divide(a,b){
     return a/b;
+}
+
+function isOperator(char){
+    if(char === "+" || char==="-" || char==="*" || char==="/")
+        return true;
+
+    return false;
 }
